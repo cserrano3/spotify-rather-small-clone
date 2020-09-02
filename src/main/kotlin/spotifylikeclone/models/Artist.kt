@@ -1,4 +1,4 @@
-package com.okta.kotlin.models
+package spotifylikeclone.models
 
 import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id

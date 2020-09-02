@@ -1,15 +1,14 @@
-package com.okta.kotlin.models
+package spotifylikeclone.models
 
 import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document
-    data class Album (
+data class Track (
         @Id
         val id: ObjectId = ObjectId.get(),
-        val tracks: MutableList<Track>,
-        val artists: List<Artist>,
-        val name: String
-
+        val name: String,
+        val length: String,
+        val album: Album
 )

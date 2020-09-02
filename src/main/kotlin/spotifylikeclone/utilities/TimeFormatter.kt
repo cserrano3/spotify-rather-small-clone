@@ -1,4 +1,4 @@
-package com.okta.kotlin.utilities
+package spotifylikeclone.utilities
 
 class TimeFormatter(val minutes: Int, val seconds: Int) {
     override fun toString(): String {

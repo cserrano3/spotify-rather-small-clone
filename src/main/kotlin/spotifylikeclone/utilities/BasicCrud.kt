@@ -1,4 +1,4 @@
-package com.okta.kotlin.utilities
+package spotifylikeclone.utilities
 
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable

@@ -1,6 +1,6 @@
-package com.okta.kotlin.services
+package spotifylikeclone.services
 
-import com.okta.kotlin.models.Artist
+import spotifylikeclone.models.Artist
 import org.bson.types.ObjectId
 import org.springframework.data.mongodb.repository.MongoRepository
 import java.util.Optional
