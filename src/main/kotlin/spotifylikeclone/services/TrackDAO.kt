@@ -8,4 +8,5 @@ import java.util.Optional
 interface TrackDAO: MongoRepository<Track, String>{
     fun findById(id: ObjectId): Optional<TrackDAO>
     fun findBykName(name: String): Track
+    fun findByAlbumId(album_id: ObjectId): List<Track>
 }

@@ -1,4 +1,4 @@
-package spotifylikeclone.utilities
+package spotifylikeclone.util
 
 class TimeFormatter(val minutes: Int, val seconds: Int) {
     override fun toString(): String {
