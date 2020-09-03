@@ -9,5 +9,5 @@ interface BasicCrud<K, T> {
     fun getById(id: K): Optional<T>
     fun insert(document: T): T
     fun update(document: T): T
-    fun deleteById(id: K): K
+    fun deleteById(id: K): Optional<T>
 }

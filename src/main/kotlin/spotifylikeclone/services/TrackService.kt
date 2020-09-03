@@ -1,6 +1,5 @@
 package spotifylikeclone.services
 
-import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import spotifylikeclone.models.Track
@@ -33,9 +32,12 @@ class TrackService(val trackDAO: TrackDAO, private val albumDAO: AlbumDAO): Basi
         }
     }
 
-    override fun deleteById(id: String): String {
-        TODO("Not yet implemented")
+    override fun deleteById(id: String): Optional<Track> {
+        return trackDAO.findById(id).apply {
+           this.ifPresent {
+               trackDAO.delete(it)
+           }
+        }
     }
-
 
 }
