@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document
         @Id
         val id: ObjectId = ObjectId.get(),
         val tracks: MutableList<Track>,
-        val artists: List<Artist>,
+        var artist: Artist,
         val name: String
-
 )
