@@ -7,8 +7,7 @@ import spotifylikeclone.models.Track
 import spotifylikeclone.util.BasicCrud
 import java.util.Optional
 
-@Service//declare this class as a Service "Component specialization"
-
+@Service
 class TrackService(val trackDAO: TrackDAO, private val albumDAO: AlbumDAO): BasicCrud<String, Track> {
     override fun getAll(pageable: Pageable) {
 
@@ -22,8 +21,16 @@ class TrackService(val trackDAO: TrackDAO, private val albumDAO: AlbumDAO): Basi
         }
     })
 
+    @Throws(Exception::class)
     override fun update(document: Track): Track {
-        TODO("Not yet implemented")
+        return if(trackDAO.existsById(document.id)) {
+            trackDAO.save(document.apply {
+                this.album = document.album?.id?.let { albumDAO.findById(it).get() }
+                // the let() function allows an object to be accessed in a well-defined scope, it's like a closure in JS.
+            })
+        } else {
+            throw object : Exception("Track not found"){}
+        }
     }
 
     override fun deleteById(id: String): String {
