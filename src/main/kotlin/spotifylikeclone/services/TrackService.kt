@@ -14,12 +14,13 @@ class TrackService(val trackDAO: TrackDAO, private val albumDAO: AlbumDAO): Basi
 
     override fun getById(id: String): Optional<Track> = trackDAO.findById(id)
 
-    override fun insert(document: Track): Track = trackDAO.insert(document.apply {
-        this.album = document.album?.id?.let {
-            albumDAO.findById(it).get()
-        }
-    })
-
+    override fun insert(document: Track): Track {
+       return trackDAO.insert(document.apply {
+            this.album = document.album?.id?.let {
+                albumDAO.findById(it).get()
+            }
+        })
+    }
     @Throws(Exception::class)
     override fun update(document: Track): Track {
         return if(trackDAO.existsById(document.id)) {

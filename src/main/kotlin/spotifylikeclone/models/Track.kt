@@ -6,10 +6,5 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document
-data class Track (
-        @Id
-        val id: ObjectId = get(),
-        val name: String,
-        val length: String,
-        var album: Album?
-)
+data class Track(@Id
+                 val id: String = ObjectId.get().toHexString() , var album: Album?, val name: String, val length: String)

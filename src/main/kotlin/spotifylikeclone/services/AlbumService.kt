@@ -22,7 +22,7 @@ class AlbumService(val albumDAO: AlbumDAO, private val artistDAO: ArtistDAO): Ba
 
     @Throws(Exception::class)
     override fun update(document: Album): Album {
-        return if(albumDAO.existsById(document.id)) {
+        return if(document.id?.let { albumDAO.existsById(it) }!!) {
             albumDAO.save(document.apply {
                 this.artist = document.artist.id.let {
                     artistDAO.findById(it).get()
